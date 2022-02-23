@@ -13,7 +13,7 @@ const WeatherComponent = () => {
 
 
     useEffect(async () => {
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${limit}&appid=${apiKey}`)
+        const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${limit}&appid=${apiKey}`)
         const data = await response.json();
         setWeatherItem(data);
     }, [cityName]);
