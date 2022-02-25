@@ -4,19 +4,118 @@
   box-sizing: border-box;
 }
 
-.searchBox{
-  width: 350px;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
-  /* margin: auto; */
+body{
+  font-family: 'Open Sans', sans-serif;
+  background: var(--bodyBackgroundColor);
 }
+
+:root{
+  --bodyBackgroundColor: #1a202e;
+  --boxBackgroundColor: #1c2230;
+  --inputBackgroundColor: #292847;
+  --borderColor: #27303f;
+  --inputTextColor: #97a6ba;
+  --textColor: #e2e8f0;
+}
+
 
 .container{
   width: 100%;
   height: 100vh;;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+}
+
+.searchBox{
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 25px;
+}
+
+.inputClass{
+  width: 65%;
+  padding: 10px 10px 10px 20px;
+  border-radius: 25px;
+  font-size: 18px;
+  border:none;
+  background: var(--inputBackgroundColor);
+  color: var(--inputTextColor);
+}
+
+.inputClass:focus{
+  outline: none;
+}
+
+.inputClass:focus::placeholder {
+  color: transparent;
+}
+
+::placeholder{
+  color:var(--inputTextColor);
+}
+
+.searchBtn{
+  height: 45px;
+  min-width: 45px;
+  padding: 10px;
+  border-radius: 24px;
+  border:none;
+  margin-left: 10px;
+  cursor: pointer;
+  background: var(--inputBackgroundColor);
+}
+
+.searchImg{
+  filter: invert(73%) sepia(6%) saturate(828%) hue-rotate(175deg) brightness(88%) contrast(94%);
+}
+
+.weatherInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--textColor);
+}
+
+.box{
+  background: var(--boxBackgroundColor);
+  border:3px solid var(--borderColor);
+  width: 500px;
+  padding: 2em;
+  border-radius: 30px;
+}
+
+.descriptionBox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.weatherDescription{
+ margin-left: 15px;
+}
+
+.weatherName{
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.weatherTemp{
+  font-size: 40px;
+}
+
+.weatherHumidity, .weatherDescription, .weatherWindSpeed{
+  font-size: 21px;
+}
+
+.weatherHumidity{
+  margin-bottom: 5px;
+}
+
+@media (max-width: 530px) { 
+  .box{
+    margin: 0 20px;
+    width: calc(100vw - 40px);
+  }
 }
