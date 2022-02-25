@@ -9,13 +9,24 @@ body{
   background: var(--bodyBackgroundColor);
 }
 
-:root{
+/* :root{
   --bodyBackgroundColor: #1a202e;
   --boxBackgroundColor: #1c2230;
   --inputBackgroundColor: #292847;
   --borderColor: #27303f;
   --inputTextColor: #97a6ba;
   --textColor: #e2e8f0;
+  --svgColor: invert(73%) sepia(6%) saturate(828%) hue-rotate(175deg) brightness(88%) contrast(94%);
+} */
+
+:root{
+  --bodyBackgroundColor: #84e0fe;
+  --boxBackgroundColor: #bfefff;
+  --inputBackgroundColor: #2666CF;
+  --borderColor: #4682b4;
+  --inputTextColor: #cae1ff;
+  --textColor: #4876ff;
+  --svgColor: invert(80%) sepia(25%) saturate(293%) hue-rotate(180deg) brightness(103%) contrast(102%);
 }
 
 
@@ -32,10 +43,11 @@ body{
   display: flex;
   justify-content: flex-start;
   margin-bottom: 25px;
+  width: 100%;
 }
 
 .inputClass{
-  width: 65%;
+  width: 75%;
   padding: 10px 10px 10px 20px;
   border-radius: 25px;
   font-size: 18px;
@@ -68,7 +80,7 @@ body{
 }
 
 .searchImg{
-  filter: invert(73%) sepia(6%) saturate(828%) hue-rotate(175deg) brightness(88%) contrast(94%);
+  filter: var(--svgColor);
 }
 
 .weatherInfo{
@@ -92,6 +104,11 @@ body{
   align-items: center;
 }
 
+.weatherIcon{
+  -webkit-filter: drop-shadow(7px 7px 7px #1c2230);
+  filter: drop-shadow(4px 4px 4px #1c2230);
+}
+
 .weatherDescription{
  margin-left: 15px;
 }
@@ -113,9 +130,26 @@ body{
   margin-bottom: 5px;
 }
 
+.headBox{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 @media (max-width: 530px) { 
   .box{
     margin: 0 20px;
     width: calc(100vw - 40px);
+  }
+
+  .checkBox{
+    margin-right: -20px;
+  }
+}
+
+@media (max-width: 375px) { 
+
+  .inputClass{
+    font-size: 15px;
   }
 }
