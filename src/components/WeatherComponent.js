@@ -27,6 +27,7 @@ const WeatherComponent = () => {
                 alert(`${cityName} not found!`);
                 return;
             }
+            console.log(data[0]);
             setCityItem(data[0]);
             
         }
@@ -82,7 +83,7 @@ const WeatherComponent = () => {
                 {
                     weatherItem && (
                         <>
-                            <div className="weatherName">{`Weather in ${weatherItem.name}`}</div>
+                            <div className="weatherName">{`Weather in ${cityItem.name}`}</div>
                             <div className="weatherTemp">{`${weatherItem.main.temp} °C`}</div>
                             <div className="descriptionBox">
                                 <img className="weatherIcon" src={`https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}.png`} alt="weatherIcon" />
