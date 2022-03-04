@@ -24,6 +24,18 @@ const WeatherComponent = () => {
         setInputVal(val.target.value);
     }
 
+    // Weather Description'dan gelen değerin ilk harflerini büyült
+    const makeUpper = (val) =>{
+        val = val.split(" ");
+        for(let i = 0; i < val.length; i++){
+            let firstLetter = val[i][0];
+            let otherVal = val[i].substr(1);
+            val[i] = firstLetter.toUpperCase() + otherVal;
+        }
+
+        return val.join(" ");
+    }
+
 
     // Get Coordinats
     useEffect(() => {
@@ -128,7 +140,7 @@ const WeatherComponent = () => {
                             <div className="weatherTemp">{`${weatherItem.main.temp} °C`}</div>
                             <div className="descriptionBox">
                                 <img className="weatherIcon" src={`https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}.png`} alt="weatherIcon" />
-                                <div className="weatherDescription">{`${weatherItem.weather[0].description}`}</div>
+                                <div className="weatherDescription">{`${makeUpper(weatherItem.weather[0].description)}`}</div>
                             </div>
                             <div className="weatherHumidity">{`Humidity: ${weatherItem.main.humidity}%`}</div>
                             <div className="weatherWindSpeed">{`Wind speed: ${weatherItem.wind.speed} km/h`}</div>
