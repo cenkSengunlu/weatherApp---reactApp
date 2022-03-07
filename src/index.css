@@ -107,6 +107,8 @@ body{
 .weatherIcon{
   -webkit-filter: drop-shadow(7px 7px 7px #1c2230);
   filter: drop-shadow(4px 4px 4px #1c2230);
+  width: 150px;
+  height: 150px;
 }
 
 .weatherDescription{

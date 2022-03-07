@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import cssThemeObject from '../cssThemeObject';
+import svgObject from '../svgObject';
+import timezoneObject from '../timezoneObject';
 
 const WeatherComponent = () => {
     const apiKey = "bfc5a840b7772812d48cf0b2a6437494";
@@ -67,13 +69,34 @@ const WeatherComponent = () => {
                 const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${cityItem?.lat}&lon=${cityItem?.lon}&appid=${apiKey}`);
                 const data = await response.json();
                 setWeatherItem(data);
+                console.log(data);
             } catch{
                 alert("Error!");
                 return;
             }
         }
         getCity();
+        
     }, [cityItem]);
+
+    
+    const iconSrc = (timezone) => {
+        if(timezone < 0){
+            timezone = Math.abs(timezone);
+        }
+        const date = new Date();
+        const utcTime = Date.parse(date.toISOString().replace('Z', ''));
+        const totalTime = utcTime + parseInt(timezoneObject[String(timezone)]);
+        const regionalTime = new Date(totalTime);
+        let dayOrNight = '';
+        if(regionalTime.getHours() > 6 && regionalTime.getHours() < 19){
+            dayOrNight = 'day';
+        }   else{
+            dayOrNight = 'night';
+        }
+
+        return svgObject[weatherItem.weather[0].main][dayOrNight];
+    }
 
 
     // Input'tan gelen değer boş değil ise cityName'e ata
@@ -139,7 +162,7 @@ const WeatherComponent = () => {
                             <div className="weatherName">{`Weather in ${cityItem.name}`}</div>
                             <div className="weatherTemp">{`${weatherItem.main.temp} °C`}</div>
                             <div className="descriptionBox">
-                                <img className="weatherIcon" src={`https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}.png`} alt="weatherIcon" />
+                                <img className="weatherIcon" src={process.env.PUBLIC_URL + `${iconSrc(weatherItem.timezone)}`} alt="weatherIcon" />
                                 <div className="weatherDescription">{`${makeUpper(weatherItem.weather[0].description)}`}</div>
                             </div>
                             <div className="weatherHumidity">{`Humidity: ${weatherItem.main.humidity}%`}</div>
