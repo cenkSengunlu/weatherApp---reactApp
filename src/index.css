@@ -19,7 +19,9 @@ body{
   --svgColor: invert(73%) sepia(6%) saturate(828%) hue-rotate(175deg) brightness(88%) contrast(94%);
 } */
 
-:root{
+
+
+/* :root{
   --bodyBackgroundColor: #84e0fe;
   --boxBackgroundColor: #bfefff;
   --inputBackgroundColor: #2666CF;
@@ -27,6 +29,18 @@ body{
   --inputTextColor: #cae1ff;
   --textColor: #4876ff;
   --svgColor: invert(80%) sepia(25%) saturate(293%) hue-rotate(180deg) brightness(103%) contrast(102%);
+} */
+
+
+:root{
+    --bodyBackgroundColor: #081b25;
+    --boxBackgroundColor: #152c39;
+    --inputBackgroundColor: #45657c;
+  /* --borderColor: #27303f; */
+    --weatherInfoBGColor: #353361;
+    --textColor: #f0f2ef;
+    --searchIconColor: #6693ab;
+    --miniIconColor: #6686b6;
 }
 
 
@@ -44,16 +58,18 @@ body{
   justify-content: flex-start;
   margin-bottom: 25px;
   width: 100%;
+
 }
 
 .inputClass{
-  width: 75%;
+  width: 60%;
   padding: 10px 10px 10px 20px;
   border-radius: 25px;
   font-size: 18px;
   border:none;
   background: var(--inputBackgroundColor);
-  color: var(--inputTextColor);
+  color: var(--textColor);
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
 }
 
 .inputClass:focus{
@@ -132,11 +148,7 @@ body{
   margin-bottom: 5px;
 }
 
-.headBox{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
+
 
 @media (max-width: 530px) { 
   .box{

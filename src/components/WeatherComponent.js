@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import cssThemeObject from '../cssThemeObject';
 import svgObject from '../svgObject';
 import timezoneObject from '../timezoneObject';
 
@@ -108,48 +107,21 @@ const WeatherComponent = () => {
         setInputVal("");
     }
 
-     // Checkbox ile tema durumunu güncelle
-    const handleChange = () => {
-        if(!checked){
-          setChecked(true);
-    
-          // CSS değişkenleri temanın durumuna göre güncellemek için obje döndür
-          for(const [key, value] of Object.entries(cssThemeObject)){
-            document.documentElement.style.setProperty(key, value.dark);
-          }
-    
-        } else{
-          setChecked(false);
-    
-          // CSS değişkenleri temanın durumuna göre güncellemek için obje döndür
-          for(const [key, value] of Object.entries(cssThemeObject)){
-            document.documentElement.style.setProperty(key, value.light);
-          }
-    
-        } 
-      }
+
 
     return(
         <div className="container">
 
             {/* Input + Submit Button + Toggle*/}
             <div className="box">
-                <div className="headBox">
-                    <div className="searchBox">
-                        <input type="text" value={inputVal} placeholder="Enter City Name" className="inputClass" onChange={getValue} 
-                            onKeyPress={(ev) => {
-                              if (ev.key === "Enter") { handleClick(); } }}
-                            >
-                        </input>
-                        <div className="searchBtn" onClick={() => handleClick()}>
-                            <img src={process.env.PUBLIC_URL + '/images/search.svg'} className="searchImg" />
-                        </div>
-                    </div>
-                    <div className="checkBox">
-                        <label className="switch">
-                          <input type="checkbox" name="themeSelector" onChange={() => handleChange()}/>
-                          <span className="slider round"></span>
-                        </label>
+                <div className="searchBox">
+                    <input type="text" value={inputVal} placeholder="Enter City Name" className="inputClass" onChange={getValue} 
+                        onKeyPress={(ev) => {
+                          if (ev.key === "Enter") { handleClick(); } }}
+                        >
+                    </input>
+                    <div className="searchBtn" onClick={() => handleClick()}>
+                        <img src={process.env.PUBLIC_URL + '/images/search.svg'} className="searchImg" />
                     </div>
                 </div>
                 
@@ -166,6 +138,9 @@ const WeatherComponent = () => {
                                 <div className="weatherDescription">{`${makeUpper(weatherItem.weather[0].description)}`}</div>
                             </div>
                             <div className="weatherHumidity">{`Humidity: ${weatherItem.main.humidity}%`}</div>
+                            {/* <div>
+
+                            </div> */}
                             <div className="weatherWindSpeed">{`Wind speed: ${weatherItem.wind.speed} km/h`}</div>
                         </>
                     )
