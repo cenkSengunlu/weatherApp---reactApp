@@ -1,5 +1,5 @@
 import React from 'react';
-import ClearDayIcon from './components/SvgComponentsClearDayIcon';
+import ClearDayIcon from './components/SvgComponents/ClearDayIcon';
 import CloudsDayIcon from './components/SvgComponents/CloudsDayIcon';
 import DrizzleDayIcon from './components/SvgComponents/DrizzleDayIcon';
 import RainDayIcon from './components/SvgComponents/RainDayIcon';
