@@ -17,8 +17,6 @@ const WeatherComponent = () => {
     // Openweather Api'ından gelecek objeyi tut
     const [weatherItem, setWeatherItem] = useState(null);
 
-     // Tema belirleyici toggle'ın durumunu tut
-    const [checked, setChecked] = useState(false);
 
     // Input'taki veriyi al
     const getValue = (val) => {
@@ -94,8 +92,12 @@ const WeatherComponent = () => {
             dayOrNight = 'night';
         }
 
+        console.log(regionalTime);
+
         return svgObject[weatherItem.weather[0].main][dayOrNight];
     }
+
+    
 
 
     // Input'tan gelen değer boş değil ise cityName'e ata
@@ -121,7 +123,7 @@ const WeatherComponent = () => {
                         >
                     </input>
                     <div className="searchBtn" onClick={() => handleClick()}>
-                        <img src={process.env.PUBLIC_URL + '/images/search.svg'} className="searchImg" />
+                        <img src={process.env.PUBLIC_URL + '/images/search.svg'} className="searchImg" alt="search"/>
                     </div>
                 </div>
                 
@@ -131,17 +133,26 @@ const WeatherComponent = () => {
                 {
                     weatherItem && (
                         <>
-                            <div className="weatherName">{`Weather in ${cityItem.name}`}</div>
-                            <div className="weatherTemp">{`${weatherItem.main.temp} °C`}</div>
+                            <div className="weatherName">{`${cityItem.name}, ${weatherItem.sys.country}`}</div>
                             <div className="descriptionBox">
                                 <img className="weatherIcon" src={process.env.PUBLIC_URL + `${iconSrc(weatherItem.timezone)}`} alt="weatherIcon" />
                                 <div className="weatherDescription">{`${makeUpper(weatherItem.weather[0].description)}`}</div>
                             </div>
-                            <div className="weatherHumidity">{`Humidity: ${weatherItem.main.humidity}%`}</div>
-                            {/* <div>
+                            <div className="weatherTemp">{`${weatherItem.main.temp}°C`}</div>
+                            
+                            <div className="miniInfo">
+                                <div className="weatherWindSpeed">
+                                    <img className="miniIcon" src={process.env.PUBLIC_URL + `/images/windSpeed.svg`} alt="Wind Speed" />
+                                    <div>{`${weatherItem.wind.speed}km/h`}</div>
+                                </div>
 
-                            </div> */}
-                            <div className="weatherWindSpeed">{`Wind speed: ${weatherItem.wind.speed} km/h`}</div>
+                                <div className="weatherHumidity">
+                                    <img className="miniIcon" src={process.env.PUBLIC_URL + `/images/drop.svg`} alt="Humidity" />
+                                    <div>{`${weatherItem.main.humidity}%`}</div>
+                                </div>
+                            </div>
+                            
+                            
                         </>
                     )
                 } 

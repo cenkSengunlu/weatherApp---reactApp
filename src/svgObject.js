@@ -1,17 +1,35 @@
+import React from 'react';
+import ClearDayIcon from './components/SvgComponentsClearDayIcon';
+import CloudsDayIcon from './components/SvgComponents/CloudsDayIcon';
+import DrizzleDayIcon from './components/SvgComponents/DrizzleDayIcon';
+import RainDayIcon from './components/SvgComponents/RainDayIcon';
+import MistDayIcon from './components/SvgComponents/MistDayIcon';
+import SnowDayIcon from './components/SvgComponents/SnowDayIcon';
+import ThunderstormDayIcon from './components/SvgComponents/ThunderstormDayIcon';
+
+import ClearNightIcon from './components/SvgComponents/ClearNightIcon';
+import CloudsNightIcon from './components/SvgComponents/CloudsNightIcon';
+import DrizzleNightIcon from './components/SvgComponents/DrizzleNightIcon';
+import RainNightIcon from './components/SvgComponents/RainNightIcon';
+import MistNightIcon from './components/SvgComponents/MistNightIcon';
+import SnowNightIcon from './components/SvgComponents/SnowNightIcon';
+import ThunderstormNightIcon from './components/SvgComponents/ThunderstormNightIcon';
+
+
 const svgObject = {
     'Clear':{
-        'day': '/images/clearskyDay.svg',
-        'night': '/images/clearskyNight.svg'
+        'day': ClearDayIcon,
+        'night': ClearNightIcon
     },
 
     'Clouds':{
-        'day': '/images/cloudsDay.svg',
-        'night': '/images/cloudsNight.svg'
+        'day': CloudsDayIcon,
+        'night': CloudsNightIcon
     },
 
     'Rain':{
-        'day': '/images/rainDay.svg',
-        'night': '/images/rainNight.svg'
+        'day': DrizzleDayIcon,
+        'night': DrizzleNightIcon
     },
 
     'Drizzle':{
@@ -37,7 +55,7 @@ const svgObject = {
     'Atmosphere':{
         'day': '/images/mistDay.svg',
         'night': '/images/mistNight.svg'
-    },
+    }
     
 
 
