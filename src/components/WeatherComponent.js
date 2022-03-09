@@ -135,7 +135,8 @@ const WeatherComponent = () => {
                         <>
                             <div className="weatherName">{`${cityItem.name}, ${weatherItem.sys.country}`}</div>
                             <div className="descriptionBox">
-                                <img className="weatherIcon" src={process.env.PUBLIC_URL + `${iconSrc(weatherItem.timezone)}`} alt="weatherIcon" />
+                                <div className="weatherIcon">{iconSrc(weatherItem.timezone)}</div>
+                                {/* <img className="weatherIcon" src={process.env.PUBLIC_URL + `${iconSrc(weatherItem.timezone)}`} alt="weatherIcon" /> */}
                                 <div className="weatherDescription">{`${makeUpper(weatherItem.weather[0].description)}`}</div>
                             </div>
                             <div className="weatherTemp">{`${weatherItem.main.temp}°C`}</div>
