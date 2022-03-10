@@ -47,7 +47,6 @@ const WeatherComponent = () => {
             const data = await response.json();
             // cityName değeri geocoding Api'da bir şeyle eşleşmezse hata mesajı ver.
             if(!data[0]){
-                setCityItem(data[1]);
                 alert(`${cityName} not found!`);
                 return;
             }
