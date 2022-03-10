@@ -97,6 +97,8 @@ body{
   cursor: pointer;
   /* background: var(--inputBackgroundColor); */
   filter: var(--searchIconColor);
+  display: flex;
+  align-items: center;
 }
 
 
@@ -135,6 +137,9 @@ body{
   fill: var(--weatherIconColor);
   margin: 10px 0; 
   display:flex;
+  
+  -webkit-filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
+   filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
 }
 
 

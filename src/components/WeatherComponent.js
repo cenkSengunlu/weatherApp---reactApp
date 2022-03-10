@@ -17,6 +17,9 @@ const WeatherComponent = () => {
     // Openweather Api'ından gelecek objeyi tut
     const [weatherItem, setWeatherItem] = useState(null);
 
+    // Bölgesel tarihi tutar
+    // const [weatherTime, setWeatherTime] = useState("");
+
 
     // Input'taki veriyi al
     const getValue = (val) => {
@@ -76,6 +79,7 @@ const WeatherComponent = () => {
         
     }, [cityItem]);
 
+
     
     const iconSrc = (timezone) => {
         if(timezone < 0){
@@ -85,6 +89,7 @@ const WeatherComponent = () => {
         const utcTime = Date.parse(date.toISOString().replace('Z', ''));
         const totalTime = utcTime + parseInt(timezoneObject[String(timezone)]);
         const regionalTime = new Date(totalTime);
+        // setWeatherTime(`${regionalTime.getHours()}:${regionalTime.getMinutes()}`);
         let dayOrNight = '';
         if(regionalTime.getHours() > 6 && regionalTime.getHours() < 19){
             dayOrNight = 'day';
@@ -92,7 +97,8 @@ const WeatherComponent = () => {
             dayOrNight = 'night';
         }
 
-        console.log(regionalTime);
+        // console.log(regionalTime);
+       
 
         return svgObject[weatherItem.weather[0].main][dayOrNight];
     }
@@ -143,13 +149,14 @@ const WeatherComponent = () => {
                             
                             <div className="miniInfo">
                                 <div className="weatherWindSpeed">
-                                    <img className="miniIcon" src={process.env.PUBLIC_URL + `/images/windSpeed.svg`} alt="Wind Speed" />
+                                    <img className="miniIcon" src={process.env.PUBLIC_URL + `/images/windspeed.svg`} alt="Wind Speed" />
                                     <div>{`${weatherItem.wind.speed}km/h`}</div>
                                 </div>
 
                                 <div className="weatherHumidity">
                                     <img className="miniIcon" src={process.env.PUBLIC_URL + `/images/drop.svg`} alt="Humidity" />
                                     <div>{`${weatherItem.main.humidity}%`}</div>
+                                    {/* <div>{`        ${weatherTime}`}</div> */}
                                 </div>
                             </div>
                             
