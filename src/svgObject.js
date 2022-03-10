@@ -15,6 +15,8 @@ import MistNightIcon from './components/SvgComponents/MistNightIcon';
 import SnowNightIcon from './components/SvgComponents/SnowNightIcon';
 import ThunderstormNightIcon from './components/SvgComponents/ThunderstormNightIcon';
 
+import SearchIcon from './components/SvgComponents/SearchIcon';
+
 
 const svgObject = {
     'Clear':{
@@ -55,8 +57,9 @@ const svgObject = {
     'Atmosphere':{
         'day': <MistDayIcon />,
         'night': <MistNightIcon />
-    }
+    },
     
+    'Search': <SearchIcon />
 
 
 }

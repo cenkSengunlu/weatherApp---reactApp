@@ -17,8 +17,6 @@ const WeatherComponent = () => {
     // Openweather Api'ından gelecek objeyi tut
     const [weatherItem, setWeatherItem] = useState(null);
 
-    // Bölgesel tarihi tutar
-    // const [weatherTime, setWeatherTime] = useState("");
 
 
     // Input'taki veriyi al
@@ -49,6 +47,7 @@ const WeatherComponent = () => {
             const data = await response.json();
             // cityName değeri geocoding Api'da bir şeyle eşleşmezse hata mesajı ver.
             if(!data[0]){
+                setCityItem(data[1]);
                 alert(`${cityName} not found!`);
                 return;
             }
@@ -129,7 +128,8 @@ const WeatherComponent = () => {
                         >
                     </input>
                     <div className="searchBtn" onClick={() => handleClick()}>
-                        <img src={process.env.PUBLIC_URL + '/images/search.svg'} className="searchImg" alt="search"/>
+                        {svgObject['Search']}
+                        {/* <img src={process.env.PUBLIC_URL + '/images/search.svg'} className="searchImg" alt="search"/> */}
                     </div>
                 </div>
                 

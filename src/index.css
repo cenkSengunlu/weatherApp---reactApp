@@ -5,7 +5,7 @@
 }
 
 body{
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   background: var(--bodyBackgroundColor);
 }
 
@@ -34,13 +34,13 @@ body{
 
 :root{
     --bodyBackgroundColor: #081b25;
-    --boxBackgroundColor: #152c39;
+    --boxBackgroundColor: #14232d;
     --inputBackgroundColor: #45657c;
   /* --borderColor: #27303f; */
     --weatherInfoBGColor: #353361;
     --textColor: #f0f2ef;
     /* --searchIconColor: #6693ab; */
-    --searchIconColor: invert(52%) sepia(36%) saturate(386%) hue-rotate(157deg) brightness(99%) contrast(87%);
+    /* --searchIconColor: invert(52%) sepia(36%) saturate(386%) hue-rotate(157deg) brightness(99%) contrast(87%); */
     /* --miniIconColor: #6686b6; */
     --miniIconColor: invert(52%) sepia(43%) saturate(402%) hue-rotate(176deg) brightness(91%) contrast(89%);
     --weatherIconColor: #f0f2ef;
@@ -54,6 +54,7 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position:relative;
 }
 
 .searchBox{
@@ -67,7 +68,7 @@ body{
 .inputClass{
   min-width: 60%;
   padding: 10px 10px 10px 20px;
-  border-radius: 25px;
+  border-radius: 25px 0 0 25px;
   font-size: 18px;
   border:none;
   background: var(--inputBackgroundColor);
@@ -91,11 +92,11 @@ body{
   height: 45px;
   min-width: 45px;
   padding: 10px;
-  border-radius: 24px;
+  border-radius: 0 25px 25px 0;
   border:none;
-  margin-left: 10px;
+  color: var(--textColor);
   cursor: pointer;
-  /* background: var(--inputBackgroundColor); */
+  background: var(--inputBackgroundColor);
   filter: var(--searchIconColor);
   display: flex;
   align-items: center;
@@ -138,8 +139,8 @@ body{
   margin: 10px 0; 
   display:flex;
   
-  -webkit-filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
-   filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
+  -webkit-filter: drop-shadow(0px 0px 212px #6152C8);
+   filter: drop-shadow(0px 0px 12px #6152C8);
 }
 
 
@@ -172,7 +173,7 @@ body{
 }
 
 .miniIcon{
-  margin-right: 15px;
+  margin-right: 7px;
   filter: var(--miniIconColor);
 }
 
