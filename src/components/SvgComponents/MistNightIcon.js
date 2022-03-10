@@ -2,7 +2,7 @@ import React from 'react';
 
 const MistNightIcon = () => {
   return (
-    <svg aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+    <svg aria-hidden="true" role="img" width="200" height="200" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
       <linearGradient id="grad8" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" style={{'stopColor': '#22b1fe', 'stopOpacity': 1}} />
         <stop offset="75%" style={{'stopColor': '#dc5bf9', 'stopOpacity': 1}} />
