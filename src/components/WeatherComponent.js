@@ -26,7 +26,13 @@ const WeatherComponent = () => {
 
     // Input'taki veriyi al
     const getValue = (val) => {
-        setInputVal(val.target.value);
+        const { value } = val.target;
+        const re = /^[A-Za-z]+$/;
+        if (value === "" || re.test(value)) {
+            setInputVal(val.target.value);
+        }
+
+        
     }
 
     // Weather Description'dan gelen değerin ilk harflerini büyült
@@ -123,6 +129,9 @@ const WeatherComponent = () => {
     }
 
 
+
+
+
     // Hava durumu iconunu ve aranan yerin tarihini alan değişkenler
     const icon = weatherItem  ? iconSrc(weatherItem.timezone): null;
     const weatherTimeResult = weatherItem  ? weatherTime(weatherItem.timezone): null;
@@ -134,9 +143,8 @@ const WeatherComponent = () => {
             <div className="box">
                 <div className="searchBox">
                     <input type="text" value={inputVal} placeholder="Enter City Name" className="inputClass" onChange={getValue} 
-                        onKeyPress={(ev) => {
-                          if (ev.key === "Enter") { handleClick(ev.key); } }}
-                        >
+                        onKeyPress={(ev) => { if (ev.key === "Enter") { handleClick(ev.key); } }}
+                    >
                     </input>
                     <div className="searchBtn" onClick={() => handleClick()}>
                         {svgObject['Search']}
