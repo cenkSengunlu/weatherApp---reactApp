@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import svgObject from '../svgObject';
 import timezoneObject from '../timezoneObject';
 
+import WeatherTimeIcon from './SvgComponents/WeatherTimeIcon';
+import WindSpeedIcon from './SvgComponents/WindSpeedIcon';
+import DropIcon from './SvgComponents/DropIcon';
+
 const WeatherComponent = () => {
     const apiKey = "bfc5a840b7772812d48cf0b2a6437494";
     const limit = 1;
@@ -16,6 +20,7 @@ const WeatherComponent = () => {
 
     // Openweather Api'ından gelecek objeyi tut
     const [weatherItem, setWeatherItem] = useState(null);
+
 
 
 
@@ -77,27 +82,27 @@ const WeatherComponent = () => {
         
     }, [cityItem]);
 
+    // Aranan bölgenin timezone'una göre bölgesel zamanı döndüren fonksiyon
+    const weatherTime = (timezone) => {
+        timezone = Math.abs(timezone);
 
-    
-    const iconSrc = (timezone) => {
-        if(timezone < 0){
-            timezone = Math.abs(timezone);
-        }
         const date = new Date();
         const utcTime = Date.parse(date.toISOString().replace('Z', ''));
         const totalTime = utcTime + parseInt(timezoneObject[String(timezone)]);
         const regionalTime = new Date(totalTime);
-        // setWeatherTime(`${regionalTime.getHours()}:${regionalTime.getMinutes()}`);
+
+        return regionalTime;
+    }
+    
+    // timezone'a göre aranan şehirin gece mi gündüz mü olduğunu belirleyip ona göre icon döndüren fonksiyon
+    const iconSrc = (timezone) => {
+        const regionalTime = weatherTime(timezone);
         let dayOrNight = '';
         if(regionalTime.getHours() > 6 && regionalTime.getHours() < 19){
             dayOrNight = 'day';
         }   else{
             dayOrNight = 'night';
         }
-
-        // console.log(regionalTime);
-       
-
         return svgObject[weatherItem.weather[0].main][dayOrNight];
     }
 
@@ -105,17 +110,24 @@ const WeatherComponent = () => {
 
 
     // Input'tan gelen değer boş değil ise cityName'e ata
-    const handleClick = () => {
+    const handleClick = (ev = '') => {
         if(inputVal.trim() === ""){
             return;
+        }
+
+        if(ev === 'Enter'){
+            document.querySelector('.inputClass').blur();
         }
         setCityName(inputVal);
         setInputVal("");
     }
 
 
-
+    // Hava durumu iconunu ve aranan yerin tarihini alan değişkenler
+    const icon = weatherItem  ? iconSrc(weatherItem.timezone): null;
+    const weatherTimeResult = weatherItem  ? weatherTime(weatherItem.timezone): null;
     return(
+        
         <div className="container">
 
             {/* Input + Submit Button + Toggle*/}
@@ -123,12 +135,11 @@ const WeatherComponent = () => {
                 <div className="searchBox">
                     <input type="text" value={inputVal} placeholder="Enter City Name" className="inputClass" onChange={getValue} 
                         onKeyPress={(ev) => {
-                          if (ev.key === "Enter") { handleClick(); } }}
+                          if (ev.key === "Enter") { handleClick(ev.key); } }}
                         >
                     </input>
                     <div className="searchBtn" onClick={() => handleClick()}>
                         {svgObject['Search']}
-                        {/* <img src={process.env.PUBLIC_URL + '/images/search.svg'} className="searchImg" alt="search"/> */}
                     </div>
                 </div>
                 
@@ -140,26 +151,27 @@ const WeatherComponent = () => {
                         <>
                             <div className="weatherName">{`${cityItem.name}, ${weatherItem.sys.country}`}</div>
                             <div className="descriptionBox">
-                                <div className="weatherIcon">{iconSrc(weatherItem.timezone)}</div>
-                                {/* <img className="weatherIcon" src={process.env.PUBLIC_URL + `${iconSrc(weatherItem.timezone)}`} alt="weatherIcon" /> */}
+                                <div className="weatherIcon">{icon}</div>
                                 <div className="weatherDescription">{`${makeUpper(weatherItem.weather[0].description)}`}</div>
                             </div>
                             <div className="weatherTemp">{`${weatherItem.main.temp}°C`}</div>
                             
                             <div className="miniInfo">
                                 <div className="weatherWindSpeed">
-                                    <img className="miniIcon" src={process.env.PUBLIC_URL + `/images/windspeed.svg`} alt="Wind Speed" />
-                                    <div>{`${weatherItem.wind.speed}km/h`}</div>
+                                    <div className="miniIcon"><WindSpeedIcon /></div>
+                                    <div className="miniInfoText">{`${weatherItem.wind.speed}km/h`}</div>
                                 </div>
 
                                 <div className="weatherHumidity">
-                                    <img className="miniIcon" src={process.env.PUBLIC_URL + `/images/drop.svg`} alt="Humidity" />
-                                    <div>{`${weatherItem.main.humidity}%`}</div>
-                                    {/* <div>{`        ${weatherTime}`}</div> */}
+                                    <div className="miniIcon"><DropIcon /></div>
+                                    <div className="miniInfoText">{`${weatherItem.main.humidity}%`}</div>
+                                </div>
+
+                                <div className="weatherTime">
+                                    <div className="miniIcon"><WeatherTimeIcon /></div>
+                                    <div className="miniInfoText">{`${weatherTimeResult.getHours()}:${String(weatherTimeResult.getMinutes()).padStart(2, '0')}`}</div>
                                 </div>
                             </div>
-                            
-                            
                         </>
                     )
                 } 

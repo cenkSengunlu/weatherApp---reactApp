@@ -35,14 +35,13 @@ body{
 :root{
     --bodyBackgroundColor: #081b25;
     --boxBackgroundColor: #14232d;
-    --inputBackgroundColor: #45657c;
+    --inputBackgroundColor: #263742;
   /* --borderColor: #27303f; */
     --weatherInfoBGColor: #353361;
     --textColor: #f0f2ef;
     /* --searchIconColor: #6693ab; */
     /* --searchIconColor: invert(52%) sepia(36%) saturate(386%) hue-rotate(157deg) brightness(99%) contrast(87%); */
-    /* --miniIconColor: #6686b6; */
-    --miniIconColor: invert(52%) sepia(43%) saturate(402%) hue-rotate(176deg) brightness(91%) contrast(89%);
+    --miniIconColor: #6686b6;
     --weatherIconColor: #f0f2ef;
 }
 
@@ -54,7 +53,7 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position:relative;
+  
 }
 
 .searchBox{
@@ -73,6 +72,7 @@ body{
   background: var(--inputBackgroundColor);
   color: var(--textColor);
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+  /* position:absolute; */
 }
 
 .inputClass:focus{
@@ -96,7 +96,7 @@ body{
   color: var(--textColor);
   cursor: pointer;
   background: var(--inputBackgroundColor);
-  filter: var(--searchIconColor);
+  /* fill: var(--searchIconColor); */
   display: flex;
   align-items: center;
 }
@@ -115,6 +115,7 @@ body{
   padding: 2em;
   border-radius: 30px;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+  position:relative;
 }
 
 .descriptionBox{
@@ -154,26 +155,31 @@ body{
 
 
 
-.weatherHumidity, .weatherWindSpeed{
-  font-size: 16px;
+.weatherHumidity, .weatherWindSpeed, .weatherTime{
+  font-size: 18px;
 }
 
 .miniInfo{
   margin-top:25px;
-  width: 65%;
+  width: 70%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-.weatherHumidity, .weatherWindSpeed{
+
+.weatherHumidity, .weatherWindSpeed, .weatherTime, .miniInfoText{
   display: flex;
   justify-content: center;
   align-items: center;
+  line-height: 24px;
 }
 
 .miniIcon{
   margin-right: 7px;
-  filter: var(--miniIconColor);
+  color: var(--miniIconColor);
+  display:flex;
+  justify-content: center;
+  align-items:center;
 }
 
 
@@ -191,8 +197,17 @@ body{
     width: 100%;
   }
 
+  .container{
+    padding-top: 57px;
+    justify-content: flex-start;
+  }
+
   .inputClass{
     width: 100%;
     font-size: 18px;
+  }
+
+  .weatherHumidity, .weatherWindSpeed, .weatherTime{
+    font-size: 16px;
   }
 }

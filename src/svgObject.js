@@ -4,7 +4,7 @@ import CloudsDayIcon from './components/SvgComponents/CloudsDayIcon';
 import DrizzleDayIcon from './components/SvgComponents/DrizzleDayIcon';
 import RainDayIcon from './components/SvgComponents/RainDayIcon';
 import MistDayIcon from './components/SvgComponents/MistDayIcon';
-import SnowDayIcon from './components/SvgComponents/SnowDayIcon';
+// import SnowDayIcon from './components/SvgComponents/SnowDayIcon';
 import ThunderstormDayIcon from './components/SvgComponents/ThunderstormDayIcon';
 
 import ClearNightIcon from './components/SvgComponents/ClearNightIcon';
@@ -45,7 +45,7 @@ const svgObject = {
     },
 
     'Snow':{
-        'day': <SnowDayIcon />,
+        'day': <SnowNightIcon />,
         'night': <SnowNightIcon />
     },
 
