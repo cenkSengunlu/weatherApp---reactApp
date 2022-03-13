@@ -27,7 +27,7 @@ const WeatherComponent = () => {
     // Input'taki veriyi al
     const getValue = (val) => {
         const { value } = val.target;
-        const re = /^[a-zA-Z\u00C0-\u017F]+(?:\s[a-zA-Z\u00C0-\u017F]+)*$/;
+        const re = /[a-zA-ZüğşçöıÜĞŞİÇÖI ]/;
         if (value === "" || re.test(value)) {
             setInputVal(val.target.value);
         }
