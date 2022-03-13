@@ -27,12 +27,10 @@ const WeatherComponent = () => {
     // Input'taki veriyi al
     const getValue = (val) => {
         const { value } = val.target;
-        const re = /^[A-Za-z]+$/;
+        const re = /^[a-zA-Z\u00C0-\u017F]+(?:\s[a-zA-Z\u00C0-\u017F]+)*$/;
         if (value === "" || re.test(value)) {
             setInputVal(val.target.value);
         }
-
-        
     }
 
     // Weather Description'dan gelen değerin ilk harflerini büyült
