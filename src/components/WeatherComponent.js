@@ -88,7 +88,6 @@ const WeatherComponent = () => {
 
     // Aranan bölgenin timezone'una göre bölgesel zamanı döndüren fonksiyon
     const weatherTime = (timezone) => {
-        timezone = Math.abs(timezone);
 
         const date = new Date();
         const utcTime = Date.parse(date.toISOString().replace('Z', ''));
